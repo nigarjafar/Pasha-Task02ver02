@@ -2,16 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import UsersTable from "./UsersTable";
 import PostsTable from "./PostsTable";
+import PostsList from "./PostsList";
 import Menu from "./Menu";
-
-const Index = () => {
-	return (
-		<div>
-			<UsersTable />
-			<PostsTable />
-		</div>
-	);
-};
 
 class App extends Component {
 	render() {
@@ -19,7 +11,7 @@ class App extends Component {
 			<BrowserRouter>
 				<div className="ui container" style={{ marginTop: "20px" }}>
 					<Menu />
-					<Route path="/" exact component={Index} />
+					<Route path="/" exact component={PostsList} />
 					<Route path="/posts" component={PostsTable} />
 					<Route path="/users" exact component={UsersTable} />
 				</div>

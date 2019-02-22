@@ -1,0 +1,3 @@
+export const USERS_FETCHED = "USERS_FETCHED";
+export const USER_FETCHED = "USER_FETCHED";
+export const POSTS_FETCHED = "POSTS_FETCHED";

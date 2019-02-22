@@ -1,10 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { usersLoad } from "../actions";
+import { fetchUsers } from "../actions";
 
 class UsersTable extends Component {
 	componentDidMount() {
-		this.props.usersLoad();
+		this.props.fetchUsers();
+	}
+
+	renderTableBody() {
+		return this.props.users.map(user => {
+			return (
+				<tr key={user.id}>
+					<td>{user.name}</td>
+					<td>{user.username}</td>
+					<td>{user.email}</td>
+				</tr>
+			);
+		});
 	}
 
 	render() {
@@ -19,17 +31,7 @@ class UsersTable extends Component {
 							<th>Email</th>
 						</tr>
 					</thead>
-					<tbody>
-						{this.props.users.map(user => {
-							return (
-								<tr key={user.id}>
-									<td>{user.name}</td>
-									<td>{user.username}</td>
-									<td>{user.email}</td>
-								</tr>
-							);
-						})}
-					</tbody>
+					<tbody>{this.renderTableBody()}</tbody>
 				</table>
 			</div>
 		);
@@ -42,5 +44,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ usersLoad }
+	{ fetchUsers }
 )(UsersTable);
