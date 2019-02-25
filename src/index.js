@@ -5,12 +5,15 @@ import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import App from "./components/App";
 import reducers from "./reducers";
-
-//import { createStore, applyMiddleware, compose } from "redux";
-//const store = createStore(reducers, applyMiddleware(thunk));
+import counter from "./middlewares/counter";
+import muteOdds from "./middlewares/muteOdds";
+import twice from "./middlewares/twice";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(
+	reducers,
+	composeEnhancers(applyMiddleware(thunk, counter, twice, muteOdds))
+);
 
 ReactDOM.render(
 	<Provider store={store}>

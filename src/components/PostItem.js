@@ -8,14 +8,11 @@ class PostItem extends Component {
   }
 
   renderUser() {
-    // console.log(this.props.users);
     if (!this.props.user) return null;
-
     return this.props.user.name;
   }
 
   render() {
-    console.log("render");
     const { title, body } = this.props.post;
     return (
       <div className="ui card">

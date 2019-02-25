@@ -14,7 +14,6 @@ export const fetchUsers = () => async dispatch => {
 export const fetchUser = id => dispatch => memoizeFetchUser(id, dispatch);
 
 const memoizeFetchUser = _.memoize(async (id, dispatch) => {
-	console.log("user" + id);
 	const result = await jsonplaceholder.get(`/users/${id}`);
 
 	dispatch({
@@ -24,7 +23,6 @@ const memoizeFetchUser = _.memoize(async (id, dispatch) => {
 });
 
 export const fetchPosts = () => async dispatch => {
-	console.log("posts");
 	const result = await jsonplaceholder.get("/posts");
 
 	dispatch({
